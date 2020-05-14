@@ -34,6 +34,8 @@ public class ShiroConfig {
         filterMap.put("/webjars/**", "anon");
         filterMap.put("/v2/**", "anon");
         filterMap.put("/swagger-resources/**", "anon");
+        filterMap.put("/doc.html", "anon");
+        filterMap.put("/webjars/**", "anon");
 
         filterMap.put("/*","authc");
 
