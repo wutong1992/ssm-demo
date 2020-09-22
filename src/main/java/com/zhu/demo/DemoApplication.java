@@ -1,6 +1,7 @@
 package com.zhu.demo;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -13,8 +14,34 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @MapperScan("com.zhu.demo.dao")
 public class DemoApplication extends SpringBootServletInitializer {
 
+    /**
+     * 启动方式一
+     * @param args
+     */
+//    public static void main(String[] args) {
+//        SpringApplication.run(DemoApplication.class, args);
+//    }
+
+    /**
+     * 启动方式二
+     * @param args
+     */
+//    public static void main(String[] args) {
+//        SpringApplication app = new SpringApplication(DemoApplication.class);
+//        app.setBannerMode(Banner.Mode.OFF);
+//        app.run(args);
+//    }
+
+    /**
+     * 启动方式三
+     * @param args
+     */
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        new SpringApplicationBuilder()
+                .sources(DemoApplication.class)
+                //设置关闭banner
+//                .bannerMode(Banner.Mode.OFF)
+                .run(args);
     }
 
     /**
