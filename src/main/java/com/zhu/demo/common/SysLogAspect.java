@@ -4,6 +4,7 @@ import com.zhu.demo.entity.MyLog;
 import com.zhu.demo.entity.SysLog;
 import com.zhu.demo.entity.UserEntity;
 import com.zhu.demo.service.SysLogService;
+import com.zhu.demo.utils.IpAdrressUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -88,7 +89,7 @@ public class SysLogAspect {
         sysLog.setUserName("userName");
 
         //获取用户ip地址
-        sysLog.setIp(request.getRequestURI());
+        sysLog.setIp(IpAdrressUtil.getIPAddress(request));
 
         //设置时间
         sysLog.setCreateTime(LocalDateTime.now());
