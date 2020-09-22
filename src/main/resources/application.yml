@@ -57,3 +57,5 @@ mybatis-plus:
     cache-enabled: false
     call-setters-on-nulls: true
     jdbc-type-for-null: 'null'
+    #开启控制台打印SQL
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
