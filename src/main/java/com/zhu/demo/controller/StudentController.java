@@ -2,6 +2,7 @@ package com.zhu.demo.controller;
 
 import com.zhu.demo.common.BaseController;
 import com.zhu.demo.common.Result;
+import com.zhu.demo.entity.MyLog;
 import com.zhu.demo.entity.StudentEntity;
 import com.zhu.demo.service.StudentService;
 import io.swagger.annotations.Api;
@@ -27,6 +28,7 @@ public class StudentController extends BaseController {
     @Autowired
     private StudentService studentService;
 
+    @MyLog(value = "测试")
     @ApiOperation(value = "测试接口",notes = "仅输出提示语",httpMethod = "GET")
     @GetMapping("/test")
     public String hello() {
