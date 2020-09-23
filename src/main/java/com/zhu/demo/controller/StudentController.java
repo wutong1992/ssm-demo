@@ -4,6 +4,7 @@ import com.zhu.demo.common.BaseController;
 import com.zhu.demo.common.Result;
 import com.zhu.demo.entity.MyLog;
 import com.zhu.demo.entity.StudentEntity;
+import com.zhu.demo.entity.UserEntity;
 import com.zhu.demo.service.StudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -31,7 +33,7 @@ public class StudentController extends BaseController {
     @MyLog(value = "测试")
     @ApiOperation(value = "测试接口",notes = "仅输出提示语",httpMethod = "GET")
     @GetMapping("/test")
-    public String hello() {
+    public String hello(@Valid UserEntity userEntity) {
         return "Hello World!";
     }
 

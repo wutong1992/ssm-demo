@@ -1,5 +1,6 @@
 package com.zhu.demo.common;
 
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -22,6 +23,10 @@ public class CustomExtHandler extends BaseController {
     @ExceptionHandler(value = Exception.class)
     public Object handleException(Exception e, HttpServletRequest request) {
         logger.info("url {}, msg {}", request.getRequestURL(), e.getMessage());
+        if(e instanceof BindException) {
+            String msg = ((BindException) e).getBindingResult().getFieldError().getDefaultMessage();
+            return Result.error(CodeMsg.INTER_ERROR, msg);
+        }
         return Result.error(CodeMsg.INTER_ERROR, e.getMessage());
     }
 }
