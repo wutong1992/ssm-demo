@@ -10,11 +10,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -27,7 +27,7 @@ import java.util.List;
 @Api(tags = "学生信息记录")
 public class StudentController extends BaseController {
 
-    @Autowired
+    @Resource
     private StudentService studentService;
 
     @MyLog(value = "测试")
