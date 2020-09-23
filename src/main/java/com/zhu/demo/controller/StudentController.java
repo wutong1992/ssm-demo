@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -37,16 +38,14 @@ public class StudentController extends BaseController {
         return "Hello World!";
     }
 
-    @ApiOperation(value = "查询所有学生记录",notes = "不含分页",httpMethod = "GET")
-    /**
-     @ApiImplicitParam(dataType = "string",name = "name",value = "姓名",required = true)
-     @ApiImplicitParams({
-        @ApiImplicitParam(name = "page", value = "当前页码", paramType = "query", dataType = "int", example = "1"),
-        @ApiImplicitParam(name = "limit", value = "每页大小", paramType = "query", dataType = "int", example = "10")
-     }) **/
+    @ApiOperation(value = "查询所有学生记录",notes = "含分页",httpMethod = "GET")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "page", value = "当前页码", paramType = "query", dataType = "long", example = "1"),
+        @ApiImplicitParam(name = "limit", value = "每页大小", paramType = "query", dataType = "long", example = "2L")
+    })
     @GetMapping("/all")
-    public Result<List<StudentEntity>> queryList() {
-        Result<List<StudentEntity>> success = Result.success(studentService.list());
+    public Result<List<StudentEntity>> queryList(@RequestParam("page") long page,@RequestParam("limit") long limit) {
+        Result<List<StudentEntity>> success = Result.success(studentService.queryAllByPage(page, limit));
         return success;
     }
 }
