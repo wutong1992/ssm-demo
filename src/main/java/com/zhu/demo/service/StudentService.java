@@ -3,6 +3,9 @@ package com.zhu.demo.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zhu.demo.entity.StudentEntity;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -17,4 +20,12 @@ public interface StudentService extends IService<StudentEntity> {
      * @return
      */
     List<StudentEntity> queryAllByPage(long current, long size);
+
+    /**
+     * 发送电子邮件
+     * @throws AddressException
+     * @throws MessagingException
+     * @throws IOException
+     */
+    void sendMail() throws AddressException, MessagingException, IOException;
 }
