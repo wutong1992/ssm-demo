@@ -10,10 +10,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -47,5 +44,11 @@ public class StudentController extends BaseController {
     public Result<List<StudentEntity>> queryList(@RequestParam("page") long page,@RequestParam("limit") long limit) {
         Result<List<StudentEntity>> success = Result.success(studentService.queryAllByPage(page, limit));
         return success;
+    }
+
+    @RequestMapping(value = "/demo", method = RequestMethod.POST)
+    public String test(@RequestParam int param, @RequestParam String p) {
+        System.out.println("请求参数是:" + param +">>>"+p);
+        return "test is pass!";
     }
 }
