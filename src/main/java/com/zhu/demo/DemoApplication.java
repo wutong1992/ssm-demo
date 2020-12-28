@@ -8,7 +8,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 /**
- * @author ZHUTAO
+ * @author zhutao
  */
 @SpringBootApplication
 @MapperScan("com.zhu.demo.dao")
